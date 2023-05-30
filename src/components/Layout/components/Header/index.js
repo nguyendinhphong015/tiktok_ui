@@ -16,6 +16,23 @@ const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'English',
+        //tạo cấp 2 của thẻ cha
+        children: {
+            title: 'language',
+            data: [
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English'
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt'
+                },
+
+            ]
+        }
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -37,6 +54,15 @@ function Header() {
             setSearchResult([])
         }, 0)
     }, [])
+    // handleMenuChange để xem sự thay đổi 
+    const handleMenuChange = (menuIteam) => {
+        switch (menuIteam.type) {
+            case 'language':
+
+                break;
+            default:
+        }
+    };
 
     return (
         <header className={cx('wrapper')}>
@@ -78,7 +104,10 @@ function Header() {
                     <Button primary>Login</Button>
 
                     <Menu
+                        //items nhận 1 cái mảng là MENU_ITEMS
                         items={MENU_ITEMS}
+                        // bắt sự kiện thay đổi 
+                        onChange={handleMenuChange}
                     >
                         <button className={cx('more-btn')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />

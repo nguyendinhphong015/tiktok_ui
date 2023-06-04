@@ -9,8 +9,13 @@ const cx = classNames.bind(styles)
 //là 1 hẻ button rỗng , thẻ button nhận lấy lefticon , link , và title tuy nhiên những cái này chỉ là thẻ rỗng chưa có data , 
 //import thẻ menuIteam vào thẻ index cùng cấp để lấy data từ items 
 function MenuItem({ data, onClick }) {
+
+    const classes = cx('menu-item', {
+        separate: data.separate,
+    });
+
     return (
-        <Button className={cx('menu-item')} leftIcon={data.icon} to={data.to} onClick={onClick}>{data.title}</Button>
+        <Button className={classes} leftIcon={data.icon} to={data.to} onClick={onClick}>{data.title}</Button>
     )
 }
 export default MenuItem
